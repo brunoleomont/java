@@ -5,7 +5,6 @@ import java.time.temporal.ChronoUnit;
 import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -19,20 +18,20 @@ public class MyClass {
 
         List<LocalDate> datesBeetwen = getDatesBetween(startDate, endDate);
 
-        List<LocalDate> diasNaoUteis = List.of(LocalDate.of(2022, 6, 27));
+        List<LocalDate> nonWorkingDays = List.of(LocalDate.of(2022, 6, 27));
         
-        List<LocalDate> diasUteis = List.of(LocalDate.of(2022, 7, 17));
+        List<LocalDate> businessDays = List.of(LocalDate.of(2022, 7, 17));
         
         List<LocalDate> weekends = getWeekendDaysBetweenDates(startDate, endDate);
 
-        TreeSet<LocalDate> diasDeDiferenca = new TreeSet<>();
-        diasDeDiferenca.addAll(datesBeetwen);
-        diasDeDiferenca.removeAll(diasNaoUteis);
-        diasDeDiferenca.removeAll(weekends);
-        diasDeDiferenca.addAll(diasUteis);
+        TreeSet<LocalDate> daysDifference = new TreeSet<>();
+        daysDifference.addAll(datesBeetwen);
+        daysDifference.removeAll(nonWorkingDays);
+        daysDifference.removeAll(weekends);
+        daysDifference.addAll(businessDays);
         
-        diasDeDiferenca.forEach(dia -> {
-            System.out.println(dia);
+        daysDifference.forEach(day -> {
+            System.out.println(day);
         });
     }
     
