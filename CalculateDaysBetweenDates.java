@@ -23,7 +23,7 @@ public class MyClass {
         
         List<LocalDate> diasUteis = List.of(LocalDate.of(2022, 7, 17));
         
-        List<LocalDate> weekends = weekendDaysBetweenDates(startDate, endDate);
+        List<LocalDate> weekends = getWeekendDaysBetweenDates(startDate, endDate);
 
         TreeSet<LocalDate> diasDeDiferenca = new TreeSet<>();
         diasDeDiferenca.addAll(datesBeetwen);
@@ -44,7 +44,7 @@ public class MyClass {
             .collect(Collectors.toList());
     }
     
-    public static List<LocalDate> weekendDaysBetweenDates(LocalDate startDate, LocalDate endDate) {
+    public static List<LocalDate> getWeekendDaysBetweenDates(LocalDate startDate, LocalDate endDate) {
         Set<DayOfWeek> weekend = EnumSet.of(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY);
         return startDate.datesUntil(endDate)
             .filter(d -> weekend.contains(d.getDayOfWeek()))
